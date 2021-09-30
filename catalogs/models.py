@@ -1,7 +1,8 @@
 from django.db import models
 
 
-# Book Model
+# Book Models
+""" Title Proper Model """
 class TitleProper(models.Model):
     title_proper = models.CharField(max_length=255)
     responsibility = models.CharField(max_length=255)
@@ -15,6 +16,8 @@ class TitleProper(models.Model):
     def __str__(self):
         return self.title_proper
 
+
+""" Publication Model """
 class Publication(models.Model):
     place_of_publication = models.CharField(max_length=255)
     publisher = models.CharField(max_length=255)
