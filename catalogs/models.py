@@ -1,9 +1,12 @@
 from django.db import models
 
+from core.models import TimeStampedModel
 
 # Book Models
 """ Title Proper Model """
-class TitleProper(models.Model):
+
+
+class TitleProper(TimeStampedModel):
     title_proper = models.CharField(max_length=255)
     responsibility = models.CharField(max_length=255)
     preferred_title = models.CharField(max_length=255)
@@ -18,7 +21,9 @@ class TitleProper(models.Model):
 
 
 """ Publication Model """
-class Publication(models.Model):
+
+
+class Publication(TimeStampedModel):
     place_of_publication = models.CharField(max_length=255)
     publisher = models.CharField(max_length=255)
     date_of_publication = models.DateField()
