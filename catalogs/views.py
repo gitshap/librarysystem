@@ -6,7 +6,15 @@ from catalogs.forms import (
 
 
 def create_title_proper_form(request):
-    return None
+    form = TitleProperForm()
+    context = {
+        "form": form
+    }
+    return render(request, "partials/title_proper_form.html", context=context)
 
 def create_publication_form(request):
-    return None
+    form = PublicationForm()
+    context = {
+        "form": form
+    }
+    return render(request, "partials/publication_form.html", context=context)
