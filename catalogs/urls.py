@@ -1,10 +1,7 @@
 from django.urls import path
 
-from catalogs.views import create_title_proper_form, create_publication_form, create_title_proper
+from catalogs.views import create_book
 
 urlpatterns = [
-    path('htmx/create-title-proper/',
-         create_title_proper, name='create_title_proper'),
-    path('htmx/create-title-proper-form/',
-         create_title_proper_form, name='create_title_proper_form'),
+    path('book/create-book', create_book, name='create_book'),
 ]

@@ -19,7 +19,7 @@ class Book(TimeStampedModel):
     """ Publication Model """
     place_of_publication = models.CharField(max_length=255)
     publisher = models.CharField(max_length=255)
-    date_of_publication = models.DateField()
+    # date_of_publication = models.DateField()
 
     def __str__(self):
-        return self.book
+        return self.title_proper

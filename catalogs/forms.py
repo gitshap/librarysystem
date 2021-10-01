@@ -14,4 +14,4 @@ class TitleProperForm(ModelForm):
 class PublicationForm(ModelForm):
     class Meta:
         model = Book
-        fields = ['place_of_publication', 'publisher', 'date_of_publication']
+        fields = ['place_of_publication', 'publisher']
