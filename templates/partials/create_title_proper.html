@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+
+<button
+  type="button"
+  hx-get="{% url 'create_title_proper_form' %}"
+  hx-target="#titleproperforms"
+  hx-swap="beforeend"
+>
+  Add form
+</button>
+
+<div id="titleproperforms"></div>
+
+{% endblock %}
