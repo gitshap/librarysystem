@@ -37,11 +37,14 @@
       .active {
         color: blue;
       }
+      * {
+        scroll-behavior: smooth;
+      }
     </style>
   </head>
 
-  <body class="bg-green-50 bg-opacity-25">
-    <div class="container ml-64 mt-10 mx-auto">
+  <body class="bg-gradient-to-r from-blue-200 to-green-500">
+    <div class="py-3 px-2 sm:px-4 max-w-5xl mx-auto">
       {% block content %} {% endblock content %}
     </div>
     <script>
