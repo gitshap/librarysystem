@@ -1,7 +1,37 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load tailwind_filters
+%}{% block content %}
 
-<form method="POST">
-  {% csrf_token %} {{ title_proper_form.as_p}} {{ publication_form.as_p }}
-  <input type="submit" value="submit" />
-</form>
+<div class="space-y-4 fixed mt-10">
+  <a
+    href="#title_proper"
+    class="block"
+    _="on click add .active to me wait 5s then remove .active"
+    ><h1>Title Proper</h1></a
+  >
+  <a
+    href="#publisher"
+    class="block"
+    _="on click add .active to me wait 5s then remove .active"
+    ><h1>Publisher</h1></a
+  >
+</div>
+
+<!-- Forms -->
+
+<div class="pl-64 mr-64 mx-auto">
+  <form method="POST">
+    {% csrf_token %}
+    <div id="title_proper">
+      <h1 class="text-center text-5xl">Title Proper Form</h1>
+      {{ title_proper_form|crispy}}
+    </div>
+    <div id="publisher">
+      <h1 class="text-center text-5xl">Publication Form</h1>
+      {{ publication_form|crispy }}
+    </div>
+
+    <input type="submit" value="submit" class="bg" />
+  </form>
+</div>
+
 {% endblock content %}

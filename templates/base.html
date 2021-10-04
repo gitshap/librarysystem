@@ -1,20 +1,49 @@
+{% load tailwind_filters %} {% load crispy_forms_tags %} {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Htmx Formsets</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/hyperscript.org@0.8.2"></script>
+
+    <title>Create Book</title>
     <script
       src="https://unpkg.com/htmx.org@1.5.0"
       integrity="sha384-oGA+prIp5Vchu6we2YkI51UtVzN9Jpx2Z7PnR1I78PnZlN8LkrCT4lqqqmDkyrvI"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      $(function () {
+        $("a")
+          .filter(function () {
+            return this.href === location.href;
+          })
+          .addClass("active");
+      });
+    </script>
+
+    <style>
+      .color {
+        color: red;
+      }
+
+      .active {
+        color: blue;
+      }
+    </style>
   </head>
 
-  <body>
-    {% block content %} {% endblock content %}
-
+  <body class="bg-green-50 bg-opacity-25">
+    <div class="container ml-64 mt-10 mx-auto">
+      {% block content %} {% endblock content %}
+    </div>
     <script>
       document.body.addEventListener("htmx:configRequest", (event) => {
         event.detail.headers["X-CSRFToken"] = "{{ csrf_token }}";
