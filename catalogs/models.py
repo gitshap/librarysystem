@@ -6,8 +6,8 @@ from core.models import TimeStampedModel
 
 
 class Book(TimeStampedModel):
-    """Title Proper Model"""
 
+    # title proper model
     title_proper = models.CharField(max_length=255)
     responsibility = models.CharField(max_length=255)
     preferred_title = models.CharField(max_length=255)
@@ -17,7 +17,7 @@ class Book(TimeStampedModel):
     contributors = models.CharField(max_length=255)
     added_entry_corporate = models.CharField(max_length=255)
 
-    """ Publication Model """
+    # publication model
     place_of_publication = models.CharField(max_length=255)
     publisher = models.CharField(max_length=255)
     # date_of_publication = models.DateField() # commented for testing reasons
