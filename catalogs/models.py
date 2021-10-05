@@ -6,7 +6,8 @@ from core.models import TimeStampedModel
 
 
 class Book(TimeStampedModel):
-    """ Title Proper Model """
+    """Title Proper Model"""
+
     title_proper = models.CharField(max_length=255)
     responsibility = models.CharField(max_length=255)
     preferred_title = models.CharField(max_length=255)
@@ -22,4 +23,4 @@ class Book(TimeStampedModel):
     # date_of_publication = models.DateField() # commented for testing reasons
 
     def __str__(self):
-        return self.title_proper
+        return f"Book {self.title_proper}"
