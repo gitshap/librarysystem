@@ -44,22 +44,22 @@
         </h1>
         <h1 class="mb-1 text-white font-medium">Title Proper</h1>
         <div class="text-white min-w-full">
-          {{ title_proper_form.title_proper|as_crispy_field}}
+          {{ book_form.title_proper|as_crispy_field}}
         </div>
 
         <h1 class="mb-1 text-white font-medium">Responsibility</h1>
         <div class="text-white">
-          {{ title_proper_form.responsibility|as_crispy_field}}
+          {{ book_form.responsibility|as_crispy_field}}
         </div>
 
         <h1 class="mb-1 text-white font-medium">Preferred Title</h1>
         <div class="text-white">
-          {{ title_proper_form.preferred_title|as_crispy_field}}
+          {{ book_form.preferred_title|as_crispy_field}}
         </div>
 
         <h1 class="mb-1 text-white font-medium">Parallel Title</h1>
         <div class="text-white">
-          {{ title_proper_form.parallel_title|as_crispy_field}}
+          {{ book_form.parallel_title|as_crispy_field}}
         </div>
       </div>
     </section>
@@ -71,9 +71,9 @@
         </h1>
 
         <h1 class="mb-1 text-white font-medium">Place of Publication</h1>
-        <div>{{ publication_form.place_of_publication|as_crispy_field }}</div>
+        <div>{{ book_form.place_of_publication|as_crispy_field }}</div>
         <h1 class="mb-1 text-white font-medium">Publisher</h1>
-        <div>{{ publication_form.publisher|as_crispy_field }}</div>
+        <div>{{ book_form.publisher|as_crispy_field }}</div>
       </div>
     </section>
     <button

@@ -1,31 +1,23 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from catalogs.models import Book
-from catalogs.forms import TitleProperForm, PublicationForm
+from catalogs.forms import BookForm
 
 
 def create_book(request):
-    if request.method == 'POST':
-        title_proper_form = TitleProperForm(request.POST)
-        publication_form = PublicationForm(request.POST)
 
-        if title_proper_form.is_valid() and publication_form.is_valid():
-            book = title_proper_form.save(commit=False)
+    # check if user is creating a new post
+    if request.method == "POST":
+        book_form = BookForm(request.POST)
 
-            place_of_publication = request.POST.get('place_of_publication')
-            publisher = request.POST.get('publisher')
+        if book_form.is_valid():
+            book_form.save()
+            return HttpResponse("Thanks")
 
-            book.place_of_publication = place_of_publication
-            book.publisher = publisher
-
-            book.save()
-            return HttpResponse(book)
     else:
-        title_proper_form = TitleProperForm()
-        publication_form = PublicationForm()
+        book_form = BookForm()  # otherwise create a new blank form
 
     context = {
-        'title_proper_form': title_proper_form,
-        'publication_form': publication_form,
+        "book_form": book_form,
     }
-    return render(request, 'partials/create_book.html', context=context)
+    return render(request, "partials/create_book.html", context=context)
