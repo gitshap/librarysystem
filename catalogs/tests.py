@@ -22,4 +22,4 @@ class BookTestcase(TestCase):
         self.assertEqual(new_book.id, book_with_publisher.id)
 
     def test_book_is_created(self):
-        self.assertEqual(True, Book.objects.get(title_proper="New Book 1"))
+        self.assertEqual(True, Book.objects.filter(title_proper="New Book 1").exists())
