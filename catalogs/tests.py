@@ -1,5 +1,6 @@
 from django.test import TestCase
 from catalogs.models import Book
+from django.shortcuts import get_object_or_404
 
 
 class BookTestcase(TestCase):
@@ -19,3 +20,6 @@ class BookTestcase(TestCase):
             place_of_publication="New Book 1 Publication"
         )
         self.assertEqual(new_book.id, book_with_publisher.id)
+
+    def test_book_is_created(self):
+        self.assertEqual(True, Book.objects.get(title_proper="New Book 1"))
