@@ -23,3 +23,10 @@ class BookTestcase(TestCase):
 
     def test_book_is_created(self):
         self.assertEqual(True, Book.objects.filter(title_proper="New Book 1").exists())
+
+    def test_if_book_has_created_and_updated(self):
+        new_book = Book.objects.get(title_proper="New Book 1")
+        created = new_book.created
+        modified = new_book.modified
+        self.assertIsNotNone(created)
+        self.assertIsNotNone(modified)
