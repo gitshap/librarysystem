@@ -43,9 +43,12 @@
     </style>
   </head>
 
-  <body class="bg-gradient-to-r from-blue-200 to-green-500">
-    <div class="py-3 px-2 sm:px-4 max-w-5xl mx-auto">
+  <body class="bg-green-400">
+    <div class="px-2 sm:px-4 max-w-5xl mx-auto">
       {% block content %} {% endblock content %}
+    </div>
+    <div class="w-full">
+      {% block main_content %} {% endblock main_content %}
     </div>
     <script>
       document.body.addEventListener("htmx:configRequest", (event) => {

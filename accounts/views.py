@@ -1,8 +1,9 @@
+from django.http.response import HttpResponseBadRequest
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from accounts.forms import EmployeeForm
 from accounts.admin import UserCreationForm
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import authenticate, get_user_model, login
 
 User = get_user_model()
 
@@ -33,7 +34,17 @@ def create_user(request):
     return render(request,'emp_signup.html',context=context)
 
 
-
-
+# login function
+def login_user(request):
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect(home_view)
+    else:
+        HttpResponseBadRequest()
+        print('Not allowed')
+    return render(request, 'login.html', context=None)
 
 
