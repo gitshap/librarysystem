@@ -30,7 +30,6 @@ def create_user(request):
         'user_form': user_form,
         'employee_form': employee_form
     }
-    
     return render(request,'emp_signup.html',context=context)
 
 
