@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} {% load tailwind_filters
 %}{% block content %}
 
-<div class="space-y-4 fixed mt-16 mr-40 pr-16">
+<div class="space-y-5 fixed">
   <a
     href="#title_proper"
     class="
       block
-      py-2
-      px-3
+      py-3
+      px-4
       bg-yellow-400 bg-opacity-100
       text-green-700 text-1xl
       font-medium
@@ -20,45 +20,62 @@
     href="#publisher"
     class="
       block
-      py-2
-      px-3
+      py-3
+      px-4
       bg-yellow-400 bg-opacity-100
       text-green-700 text-1xl
       font-medium
       rounded-lg
       text-center
     "
-    ><h1>PUBLISHER</h1></a
+    ><h0>PUBLISHER</h1></a
+  >
+<a
+    href="#local_information"
+    class="
+      block
+      py-3
+      px-4
+      bg-yellow-400 bg-opacity-100
+      text-green-700 text-1xl
+      font-medium
+      rounded-lg
+      text-center
+      text-sm
+    "
+    ><h0>Local Information</h1></a
   >
 </div>
 
 <!-- Forms -->
+<div class="bg-white m-8 shadow-2xl rounded-sm w-full border-black">
 
 <div class="pl-32 mr-32 ml-8 min-w-128">
+
   <form method="POST">
     {% csrf_token %}
     <section>
       <div id="title_proper" class="rounded-md mb-10">
-        <h1 class="text-center text-3xl font-bold text-yellow-400 text-2xl">
+        <h1 class="text-center bg-green-800 w-72 content-center mx-80 rounded-lg mt-2 text-3xl font-bold text-yellow-400 text-2xl">
           TITLE PROPER FORM
         </h1>
-        <h1 class="mb-1 text-white font-medium">Title Proper</h1>
-        <div class="text-white min-w-full">
+        <h1 class="mb-1 text-gray-900 font-medium">Title Proper</h1>
+        <div class="text-gray-900 min-w-full">
           {{ book_form.title_proper|as_crispy_field}}
         </div>
 
-        <h1 class="mb-1 text-white font-medium">Responsibility</h1>
-        <div class="text-white">
+        <h1 class="mb-1 text-gray-900 font-medium">Responsibility</h1>
+        <div class="text-gray-900">
           {{ book_form.responsibility|as_crispy_field}}
         </div>
 
-        <h1 class="mb-1 text-white font-medium">Preferred Title</h1>
-        <div class="text-white">
+        <h1 class="mb-1 text-gray-900 font-medium">Preferred Title</h1>
+        <div class="text-gray-900">
           {{ book_form.preferred_title|as_crispy_field}}
         </div>
 
-        <h1 class="mb-1 text-white font-medium">Parallel Title</h1>
-        <div class="text-white">
+        <h1 class="mb-1 text-gray-900 font-medium">Parallel Title</h1>
+        <div class="text-gray-900">
           {{ book_form.parallel_title|as_crispy_field}}
         </div>
       </div>
@@ -70,12 +87,64 @@
           PUBLICATION FORM
         </h1>
 
-        <h1 class="mb-1 text-white font-medium">Place of Publication</h1>
+        <h1 class="mb-1 text-gray-900 font-medium">Place of Publication</h1>
         <div>{{ book_form.place_of_publication|as_crispy_field }}</div>
-        <h1 class="mb-1 text-white font-medium">Publisher</h1>
+        <h1 class="mb-1 text-gray-900 font-medium">Publisher</h1>
         <div>{{ book_form.publisher|as_crispy_field }}</div>
+        <h1 class="mb-1 text-gray-900 font-medium">Edition</h1>
+        <div>{{ book_form.edition|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">extent_of_text</h1>
+        <div>{{ book_form.extent_of_text|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Dimension</h1>
+        <div>{{ book_form.dimension|as_crispy_field }}</div>
+
+
+        <h1 class="mb-1 text-gray-900 font-medium">Series</h1>
+        <div>{{ book_form.series|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Supplementary Content</h1>
+        <div>{{ book_form.supplementary_content|as_crispy_field }}</div>
+
+
+        <h1 class="mb-1 text-gray-900 font-medium">Content Type</h1>
+        <div>{{ book_form.content_type|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Media Type</h1>
+        <div>{{ book_form.media_type|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Carrier Type</h1>
+        <div>{{ book_form.carrier_type|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">ISBN</h1>
+        <div>{{ book_form.identifier_isbn|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">URL</h1>
+        <div>{{ book_form.url|as_crispy_field }}</div>
+
       </div>
     </section>
+    <div id="local_information">
+        <h1 class="text-center text-3xl font-bold text-yellow-400 text-2xl">
+          LOCAL INFORMATION FORM
+        </h1>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Call Number</h1>
+        <div>{{ book_form.call_number|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Accession</h1>
+        <div>{{ book_form.accession|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Language</h1>
+        <div>{{ book_form.language|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Library Location</h1>
+        <div>{{ book_form.library_location|as_crispy_field }}</div>
+
+        <h1 class="mb-1 text-gray-900 font-medium">Image</h1>
+        <div>{{ book_form.book_catalog_image|as_crispy_field }}</div>
+     </div>
     <button
       type="submit"
       value="Submit"
@@ -89,17 +158,17 @@
         shadow-sm
         text-sm
         font-medium
-        text-white
+        text-gray-900
         bg-green-600
         hover:bg-green-700
         focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500
         bg-green-500
-        text-center text-xl text-white
+        text-center text-xl text-gray-900
       "
     >
       Submit
     </button>
   </form>
 </div>
-
+</div>
 {% endblock content %}
