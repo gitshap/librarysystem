@@ -53,11 +53,15 @@ class Book(TimeStampedModel):
     language = models.CharField(max_length=10, choices=THE_CHOICES, default=CHOICE_1)
     library_location = models.CharField(max_length=10, choices=THE_CHOICES, default=CHOICE_1)
     # TODO: electronic access
-    # TODO: conver image file
+    book_catalog_image = models.CharField(max_length=10) # TODO: replace this with an image field
+
+    ## This can be done with django-simple-history
     # TODO: entered by
     # TODO: updated by
 
-    
 
     def __str__(self):
         return f"Book {self.title_proper}"
+
+
+
