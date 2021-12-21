@@ -1,15 +1,12 @@
-from django.http.response import HttpResponse
-from django.shortcuts import redirect, render
+from django.http.response import HttpResponse from django.shortcuts import redirect, render
 from catalogs.models import Book
 from catalogs.forms import BookForm
 from accounts.views import home_view
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+# from django.http import HttpResponseRedirect
 
 
 def create_book(request):
-
-    # check if user is creating a new post
     if request.method == "POST":
         book_form = BookForm(request.POST)
 
@@ -18,8 +15,7 @@ def create_book(request):
             return HttpResponse("Thanks")
 
     else:
-        book_form = BookForm()  # otherwise create a new blank form
-
+        book_form = BookForm()
     context = {
 
         "book_form": book_form,
