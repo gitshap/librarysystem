@@ -2,6 +2,7 @@ from typing import Type
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 import datetime
+from accounts.models import MyUser
 
 from core.models import TimeStampedModel
 
@@ -60,6 +61,10 @@ class Book(TimeStampedModel):
     language = models.CharField(max_length=10, choices=THE_CHOICES, default=CHOICE_1)
     library_location = models.CharField(
         max_length=10, choices=THE_CHOICES, default=CHOICE_1
+    )
+    created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True)
+    updated_by = models.ForeignKey(
+        MyUser, on_delete=models.CASCADE, related_name="updated_by", null=True
     )
     # TODO: electronic access
     book_catalog_image = models.CharField(
@@ -150,6 +155,13 @@ class Acquisition(TimeStampedModel):
     )
     dealer = models.CharField(
         max_length=2, choices=DealerChoices.choices, default=DealerChoices.FOREFRONT
+    )
+    created_by = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True)
+    updated_by = models.ForeignKey(
+        MyUser,
+        on_delete=models.CASCADE,
+        related_name="acquisition_updated_by",
+        null=True,
     )
 
     # check if it belongs to the lib  ( just a testing formality)
