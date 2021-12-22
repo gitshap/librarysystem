@@ -56,7 +56,7 @@ class Book(TimeStampedModel):
 
     # local information model
     call_number = models.CharField(max_length=10, choices=THE_CHOICES, default=CHOICE_2)
-    accession = models.CharField(max_length=15)
+    accession = models.CharField(max_length=255)
     language = models.CharField(max_length=10, choices=THE_CHOICES, default=CHOICE_1)
     library_location = models.CharField(
         max_length=10, choices=THE_CHOICES, default=CHOICE_1
@@ -74,7 +74,7 @@ class Book(TimeStampedModel):
         return f"Book {self.title_proper}"
 
 
-class Acquisition(models.Model):
+class Acquisition(TimeStampedModel):
 
     # according to django docs, use textchoices
     class DepartmentChoices(models.TextChoices):
