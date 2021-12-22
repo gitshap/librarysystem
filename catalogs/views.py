@@ -1,4 +1,5 @@
-from django.http.response import HttpResponse from django.shortcuts import redirect, render
+from django.http.response import HttpResponse
+from django.shortcuts import redirect, render
 from catalogs.models import Book
 from catalogs.forms import BookForm
 from accounts.views import home_view

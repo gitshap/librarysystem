@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block title %}Book Catalog {% endblock title %} {%
-block main_content %} {% load static %}
+{% extends 'base.html' %} {% block title %} Book Catalog {% endblock title %}
+{% block main_content %} {% load static %}
 <link
   rel="stylesheet"
   href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
@@ -70,7 +70,7 @@ block main_content %} {% load static %}
             "
             ><i class="bx bx-laptop"></i
           ></span>
-          <span class="text-sm font-medium">OPAC</span>
+          <span class="text-sm font-medium">Acquisition</span>
         </a>
       </li>
       <li>
@@ -226,7 +226,7 @@ block main_content %} {% load static %}
       </li>
       <li>
         <a
-          href="#"
+          href="{% url 'logout_user' %}"
           class="
             flex flex-row
             items-center
@@ -257,7 +257,7 @@ block main_content %} {% load static %}
     </ul>
   </div>
   <!-- Content -->
-  <h1 class="w-64 position absolute top-0 right-52">Book Catalog</h1>
+  <h1 class="w-64 position absolute top-0 right-52">Currently Logged in: {{ request.user }}</h1>
   <div class="w-full m-32 grid grid-cols-3 gap-4">
     <a
       href="{% url 'catalogs:create-book' %}"

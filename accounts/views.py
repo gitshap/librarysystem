@@ -4,9 +4,13 @@ from django.http import HttpResponse
 from accounts.forms import EmployeeForm
 from accounts.admin import UserCreationForm
 from django.contrib.auth import authenticate, get_user_model, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
 
 User = get_user_model()
 
+@login_required(login_url='employee-login')
 def home_view(request):
     return render(request, 'home.html', context=None)
 
@@ -22,7 +26,7 @@ def create_user(request):
             employee.user = user
             employee.save()
             login(request, user)
-            return redirect('home')
+            return redirect(login_user)
     else:
         user_form = UserCreationForm()
         employee_form = EmployeeForm()
@@ -47,3 +51,6 @@ def login_user(request):
     return render(request, 'login.html', context=None)
 
 
+def logout_user(request):
+    logout(request)
+    return redirect(login_user)

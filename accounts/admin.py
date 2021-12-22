@@ -11,21 +11,21 @@ from accounts.models import MyUser, Employee
 class EmployeeInline(admin.StackedInline):
     model = Employee
     can_delete = False
-    verbose_name_plural = 'employee'
-
-    
-
+    verbose_name_plural = "employee"
 
 
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label="Password confirmation", widget=forms.PasswordInput
+    )
 
     class Meta:
         model = MyUser
-        fields = ('email',)
+        fields = ("email",)
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -40,7 +40,7 @@ class UserCreationForm(forms.ModelForm):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         # set the employee bool to true
-        user.is_employee=True
+        user.is_employee = True
         if commit:
             user.save()
         return user
@@ -51,11 +51,12 @@ class UserChangeForm(forms.ModelForm):
     the user, but replaces the password field with admin's
     disabled password hash display field.
     """
+
     password = ReadOnlyPasswordHashField()
 
     class Meta:
         model = MyUser
-        fields = ('email', 'password',  'is_active', 'is_admin')
+        fields = ("email", "password", "is_active", "is_admin")
 
 
 class UserAdmin(BaseUserAdmin):
@@ -67,26 +68,26 @@ class UserAdmin(BaseUserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email',  'is_admin', 'is_employee', 'is_student')
-    list_filter = ('is_admin',)
+    list_display = ("email", "is_admin", "is_employee", "is_student")
+    list_filter = ("is_admin",)
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('date_of_birth',)}),
-        ('Permissions', {'fields': ('is_admin',)}),
+        (None, {"fields": ("email", "password")}),
+        ("Permissions", {"fields": ("is_admin",)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'date_of_birth', 'password1', 'password2'),
-        }),
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("email", "password1", "password2"),
+            },
+        ),
     )
-    search_fields = ('email',)
-    ordering = ('email',)
+    search_fields = ("email",)
+    ordering = ("email",)
     filter_horizontal = ()
 
 
-
 admin.site.register(MyUser, UserAdmin)
-admin.site.unregister(Group)

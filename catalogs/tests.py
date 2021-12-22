@@ -1,5 +1,5 @@
 from django.test import TestCase
-from catalogs.models import Book
+from catalogs.models import Book, Acquisition
 from django.shortcuts import get_object_or_404
 
 
@@ -30,3 +30,14 @@ class BookTestcase(TestCase):
         modified = new_book.modified
         self.assertIsNotNone(created)
         self.assertIsNotNone(modified)
+
+
+class AcquisitionTestCase(TestCase):
+    def setUp(self):
+        Acquisition.objects.create(title="Thesaurus")
+
+    def test_acquisition_has_default_lib(self):
+        """Acqusition must be defaulted to library department"""
+        acquisition = Acquisition.objects.get(title="Thesaurus")
+        is_it_lib = acquisition.is_library()
+        self.assertEqual(True, is_it_lib)
