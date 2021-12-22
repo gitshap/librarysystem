@@ -5,6 +5,7 @@ from accounts.forms import EmployeeForm
 from accounts.admin import UserCreationForm
 from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 
 User = get_user_model()
@@ -50,3 +51,6 @@ def login_user(request):
     return render(request, 'login.html', context=None)
 
 
+def logout_user(request):
+    logout(request)
+    return redirect(login_user)
